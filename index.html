@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    
+
+    <title>JSON IDV Collections</title>
+    
+    
+</head>
+<body>
+    <h1>Identity <span style = "color:brown; font-size:40px">V</span> Survivors</h1>
+    <div id="profiles"></div>
+
+    <script>
+        fetch('collection.json')
+            .then(response => response.json())
+            .then(data => {
+                const profilesContainer = document.getElementById('profiles');
+                data.forEach(character => {
+                    const profile = document.createElement('div');
+                    profile.classList.add('profile');
+    
+                    // Set the background image
+                   // profile.style.backgroundImage = `url(${character.imageUrl})`;
+                    
+    
+                    profile.innerHTML = `
+
+                    <h2>${character.name} - <span style="font-weight:200">${character.title}</span></h2>
+                    <img src=${character.imageUrl} alt=${character.altText} />
+                        <div class="profile-content">
+                            <p>${character.introduction}</p>
+                            <p><strong>Role:</strong> ${character.role}
+                                 
+                                </p>
+                                <p><a href="${character.wikiLink}" target="_blank">→Learn more←</a></p>
+                           
+                        </div>
+                    `;
+    
+                    profilesContainer.appendChild(profile);
+                });
+            })
+            .catch(error => console.error('Error fetching data:', error));
+    </script>
+    
+    <footer>
+        <p>Reference: <a href = "https://id5.fandom.com/wiki/Identity_V_Wiki" target="_blank">Character information derived from Wiki</a> 
+        </p>  
+    </footer>
+</body>
