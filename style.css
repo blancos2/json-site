@@ -7,7 +7,6 @@ body {
     align-content: center;
 }
 
-
 .profile {
     background: #36373e;
     margin: 10px;
@@ -69,6 +68,8 @@ h1{
 h2{
     padding: 5px 0px;
     background-color: #baaea2;
+     border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
     font-family: 'Times New Roman', Times, serif;
    
     
